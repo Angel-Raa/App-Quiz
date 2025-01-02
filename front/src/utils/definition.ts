@@ -2,7 +2,7 @@ type QuestionType = "Multiple Choice" | "True/False";
 
 // Data interface: make it more generic and reusable
 export interface Data {
-    question: Question[];
+  content: Question[];
     page:    Page;
 }
 

@@ -10,23 +10,38 @@ function App() {
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [showCreateQuiz, setShowCreateQuiz] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+  const [answers, setAnswers] = useState<
+    { questionId: number; answer: string; isCorrect: boolean }[]
+  >([]);
 
-  const startQuiz = () => setScreen("quiz");
-  const endQuiz = (finalScore: number, totalQuestions: number) => {
+  const startQuiz = () => {
+    setScreen("quiz");
+    setScore(0);
+
+    setAnswers([]);
+  };
+  const endQuiz = (
+    finalScore: number,
+    totalQuestions: number,
+    quizAnswers: { questionId: number; answer: string; isCorrect: boolean }[]
+  ) => {
     setScore(finalScore);
     setTotalQuestions(totalQuestions);
+    setAnswers(quizAnswers);
     setScreen("result");
   };
   const restartQuiz = () => setScreen("home");
   const handleCreateQuiz = (newQuiz: InputQuestion) => {
     // Lógica para crear una nueva pregunta
     // Esto se implementará en el módulo API
+    console.log("Save question:", newQuiz);
     setShowCreateQuiz(false);
   };
 
   const handleUpdateQuiz = (question: InputQuestion) => {
     // Lógica para actualizar una pregunta existente
     // Esto se implementará en el módulo API
+    console.log("Updating question:", question);
     setEditingQuestion(null);
     setShowCreateQuiz(false);
   };
@@ -40,22 +55,23 @@ function App() {
           />
         ) : (
           <>
-            {screen === 'home' && <Home onStart={startQuiz} />}
-            {screen === 'quiz' && (
+            {screen === "home" && <Home onStart={startQuiz} />}
+            {screen === "quiz" && (
               <Quiz
                 onEnd={endQuiz}
                 onCreateQuiz={() => setShowCreateQuiz(true)}
                 onEditQuiz={(question) => {
-                  setEditingQuestion(question)
-                  setShowCreateQuiz(true)
+                  setEditingQuestion(question);
+                  setShowCreateQuiz(true);
                 }}
               />
             )}
-            {screen === 'result' && (
+            {screen  === 'result'&& (
               <Result
                 score={score}
                 totalQuestions={totalQuestions}
                 onRestart={restartQuiz}
+                answers={answers}
               />
             )}
           </>

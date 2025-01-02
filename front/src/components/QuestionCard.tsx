@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 interface QuestionCardProps {
   question: Question;
-  onAnswer: (isCorrect: boolean) => void;
+  onAnswer: (isCorrect: boolean, selectedAnswer: string) => void;
   onDelete: () => void;
   onEdit: () => void;
 }
@@ -14,17 +14,19 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   onDelete,
   onEdit,
 }) => {
+
   return (
     <div className="mb-6">
-      <h2 className="text-xl font-semibold">{question.question}</h2>
+      <h2 className="text-xl font-semibold mb-4">{question.question}</h2>
+      <p className="text-sm text-gray-500 mb-2">Tema: {question.subject}</p>
       <div className="space-y-2">
         {question.choices.map((choice, index) => (
           <motion.button
             key={index}
-            whileHover={{ scale: 1.04 }}
+            whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => onAnswer(choice === question.correctAnswers[0])}
-            className="w-full text-left p-3 rounded bg-purple-100 hover-bg-purple-200 transition duration-300"
+            onClick={() => onAnswer(choice === question.correctAnswers[0], choice)}
+            className="w-full text-left p-3 rounded bg-purple-100 hover:bg-purple-200 transition duration-300"
           >
             {choice}
           </motion.button>
