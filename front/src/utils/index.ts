@@ -1,0 +1,1 @@
+export type{Data, InputQuestion, Question} from "./definition"
