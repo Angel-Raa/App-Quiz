@@ -11,19 +11,18 @@ function App() {
   const [showCreateQuiz, setShowCreateQuiz] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
   const [answers, setAnswers] = useState<
-    { questionId: number; answer: string; isCorrect: boolean }[]
+    {  answer: string; isCorrect: boolean }[]
   >([]);
 
   const startQuiz = () => {
     setScreen("quiz");
     setScore(0);
-
     setAnswers([]);
   };
   const endQuiz = (
     finalScore: number,
     totalQuestions: number,
-    quizAnswers: { questionId: number; answer: string; isCorrect: boolean }[]
+    quizAnswers: {  answer: string; isCorrect: boolean }[]
   ) => {
     setScore(finalScore);
     setTotalQuestions(totalQuestions);

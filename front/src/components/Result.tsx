@@ -13,8 +13,8 @@ export const Result: React.FC<ResultProps> = ({
   onRestart,
   answers,
 }) => {
-  const percentage = (score / totalQuestions) * 100;
-  let message:string;
+    const percentage = (score / totalQuestions) * 100
+  let message = "";
   if (percentage >= 80) {
     message = "¡Excelente trabajo!";
   } else if (percentage >= 60) {
@@ -22,7 +22,6 @@ export const Result: React.FC<ResultProps> = ({
   } else {
     message = "Sigue practicando.";
   }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -32,7 +31,7 @@ export const Result: React.FC<ResultProps> = ({
     >
       <h2 className="text-2xl font-bold mb-4">Resultados del Quiz</h2>
       <p className="text-4xl font-bold text-purple-600 mb-4">
-        {score} / {totalQuestions * 20}
+        {score} / {totalQuestions}
       </p>
       <p className="text-xl mb-6">{message}</p>
       <div className="mb-6">
