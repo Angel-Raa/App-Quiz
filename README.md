@@ -43,7 +43,7 @@ cd your-repo-name
    ```
 2. Configure the database in `application.properties` or `application.yml`:
    ```properties
-   spring.datasource.url=jdbc:mysql://localhost:5432/your_database_name
+   spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
    spring.datasource.username=your_username
    spring.datasource.password=your_password
    spring.jpa.hibernate.ddl-auto=update
