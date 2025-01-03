@@ -11,6 +11,7 @@ export interface Question {
     question:       string;
     subject:        string;
     questionType:   QuestionType;
+    timeLimit? : number
     choices:        string[];
     correctAnswers: string[];
     createAt:       Date;
@@ -29,6 +30,7 @@ export interface Page {
     question:       string;
     subject:        string;
     questionType:   QuestionType;
+    timeLimit?:    number;
     choices:        string[];
     correctAnswers: string[];
   }

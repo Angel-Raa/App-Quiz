@@ -25,6 +25,7 @@ export const Quiz: React.FC<QuizProps> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [totalPages, setTotalPages] = useState(1);
   const [selectedSubject, setSelectedSubject] = useState<string>("All");
   const [subjects, setSubjects] = useState<string[]>([]);
